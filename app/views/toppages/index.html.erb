@@ -1,11 +1,10 @@
 <% if logged_in? %>
   <div class="row">
     <aside class="col-md-4">
-   
       <%= form_for(@task) do |f| %>
        <div class="form-group">
           タスク：<%= f.text_area :content, class: 'form-control', rows: 5 %>
-          状況<%= f.text_area :status, class: 'form-control', rows: 5 %>
+          状況：<%= f.text_area :status, class: 'form-control', rows: 5 %>
         </div>
         <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
       <% end %>

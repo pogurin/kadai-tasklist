@@ -1,20 +1,16 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
   
   def index
-    if logged_in?
-      @task = current_user.tasks.build  # form_for 用
       @tasks = current_user.tasks.order('created_at DESC').page(params[:page])
-    end
   end
 
   def show
   end
 
   def new
-    @task = Task.new
+    @task = current_user.tasks.builds
   end
 
   def create
